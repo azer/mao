@@ -13,12 +13,12 @@ import . "github.com/azer/go-test"
 
 func main () {
 
-  It("does almost nothing", func(expect test.Expect) {
+  It("does almost nothing", func(expect Expect) {
     expect(3.14, 3.14)
     expect(156, 154)
   })
 
-  It("does more than nothing", func(expect test.Expect) {
+  It("does more than nothing", func(expect Expect) {
     expect("Yo!", 156)
   })
 
