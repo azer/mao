@@ -9,16 +9,16 @@ The Golang testing tool I like.
 ```go
 package main
 
-import "github.com/azer/go-test"
+import . "github.com/azer/go-test"
 
 func main () {
 
-  test.It("does almost nothing", func(expect test.Expect) {
+  It("does almost nothing", func(expect test.Expect) {
     expect(3.14, 3.14)
     expect(156, 154)
   })
 
-  test.It("does more than nothing", func(expect test.Expect) {
+  It("does more than nothing", func(expect test.Expect) {
     expect("Yo!", 156)
   })
 
