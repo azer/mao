@@ -25,7 +25,7 @@ func main () {
 }
 ```
 
-## Projects using `test.go`
+## Projects Using It
 
 * [ansi-codes](http://github.com/azer/ansi-codes.go)
 
