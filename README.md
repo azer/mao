@@ -1,4 +1,4 @@
-## test.go
+## go-test
 
 The Golang testing tool I like.
 
@@ -9,7 +9,7 @@ The Golang testing tool I like.
 ```go
 package main
 
-import "github.com/azer/test.go"
+import "github.com/azer/go-test"
 
 func main () {
 
@@ -27,6 +27,6 @@ func main () {
 
 ## Projects Using It
 
-* [ansi-codes](http://github.com/azer/ansi-codes.go)
+* [ansi-codes](http://github.com/azer/go-ansi-codes)
 
 ![](https://dl.dropboxusercontent.com/s/77k6n4vxjhgbauf/npmel_36.jpg)
