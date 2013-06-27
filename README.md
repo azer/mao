@@ -2,6 +2,8 @@
 
 The Golang testing tool I like.
 
+![](https://dl.dropboxusercontent.com/s/vfdg8mu7vvjfkjx/testgo.png)
+
 ## Usage
 
 ```go
