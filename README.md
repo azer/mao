@@ -9,17 +9,21 @@ The Golang testing tool I like.
 ```go
 package main
 
-import . "github.com/azer/go-test"
+import (
+  . "github.com/azer/test.go"
+  "math"
+)
 
 func main () {
 
-  It("does almost nothing", func(expect Expect) {
-    expect(3.14, 3.14)
-    expect(156, 154)
+  It("returns the absolute value of x", func(expect Expect) {
+    expect(math.Abs(-5), 5.0)
+    expect(math.Abs(-15), 123)
   })
 
-  It("does more than nothing", func(expect Expect) {
-    expect("Yo!", 156)
+  It("returns the greatest integer value less than or equal to x", func(expect Expect) {
+    expect(math.Floor(10.3), 10.0)
+    expect(math.Floor(10.9), 10.0)
   })
 
 }
