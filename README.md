@@ -1,6 +1,15 @@
 ## Māo
 
-BDD Testing Framework For Go
+BDD Testing Framework For Go.
+
+```go
+Desc("math.Abs", func(it It) {
+  it("returns the absolute value of x", func(expect Expect) {
+    expect(math.Abs(-12)).Equal(12.0)
+    expect(math.Abs(-.5)).Equal(0.5)
+  })
+})
+```
 
 ## Usage
 
