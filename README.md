@@ -1,8 +1,6 @@
-## go-test
+## Māo
 
-The Golang testing tool I like.
-
-![](https://dl.dropboxusercontent.com/s/vfdg8mu7vvjfkjx/testgo.png)
+BDD Testing Framework For Go
 
 ## Usage
 
