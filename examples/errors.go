@@ -8,7 +8,7 @@ func main () {
 
 		it("returns the absolute value of x", func(expect Expect) {
 			expect(1).Equal(2)
-			expect(0.5).Equal(0.5)
+			expect(0.5).Equal(0.9)
 		})
 
 		it("should return x if is positive", func(expect Expect) {

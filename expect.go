@@ -9,14 +9,20 @@ type Expected struct {
 	Value interface{}
 }
 
-func (self *Expected) Equal(b interface{}) {
+func (self *Expected) Equal (b interface{}) {
 	if self.Value != b {
-		self.Scope.PrintError(fmt.Sprintf("Expecteded `%s` to equal `%s`\n", self.Value, b))
+		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to equal `%s`", self.Value, b))
 	}
 }
 
-func (self *Expected) NotEqual(b interface{}) {
+func (self *Expected) NotEqual (b interface{}) {
 	if self.Value == b {
-		self.Scope.PrintError(fmt.Sprintf("Expecteded `%s` to not equal `%s`\n", self.Value, b))
+		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to not equal `%s`", self.Value, b))
+	}
+}
+
+func (self *Expected) NotExist () {
+	if self.Value != nil {
+		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to not exist.", self.Value))
 	}
 }
