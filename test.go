@@ -6,5 +6,7 @@ type Test struct {
 }
 
 func (test *Test) Run () {
-	test.Fn(Expect { test })
+	test.Fn(func (val interface{}) *Expected {
+		return &Expected{ test, val }
+	})
 }

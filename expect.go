@@ -2,18 +2,21 @@ package mao
 
 import "fmt"
 
-type Expect struct {
+type Expect func(val interface{}) *Expected
+
+type Expected struct {
 	Scope *Test
+	Value interface{}
 }
 
-func (self *Expect) Equal(a, b interface{}) {
-	if a != b {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to equal `%s`\n", a, b))
+func (self *Expected) Equal(b interface{}) {
+	if self.Value != b {
+		self.Scope.PrintError(fmt.Sprintf("Expecteded `%s` to equal `%s`\n", self.Value, b))
 	}
 }
 
-func (self *Expect) NotEqual(a, b interface{}) {
-	if a == b {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to not equal `%s`\n", a, b))
+func (self *Expected) NotEqual(b interface{}) {
+	if self.Value == b {
+		self.Scope.PrintError(fmt.Sprintf("Expecteded `%s` to not equal `%s`\n", self.Value, b))
 	}
 }
