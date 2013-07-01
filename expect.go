@@ -1,6 +1,9 @@
 package mao
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Expect func(val interface{}) *Expected
 
@@ -22,7 +25,23 @@ func (self *Expected) NotEqual (b interface{}) {
 }
 
 func (self *Expected) NotExist () {
+
+	msg := fmt.Sprintf("Expected `%v` to not exist.", self.Value)
+
+	if self.Value == nil {
+		return
+	}
+
 	if self.Value != nil {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to not exist.", self.Value))
+		self.Scope.PrintError(msg)
+		return
+	}
+
+	v := reflect.ValueOf(self.Value)
+
+	fmt.Println("value:", self.Value, "value == nil", self.Value == nil, " v.isNil?", v.IsNil())
+
+	if ! v.IsNil() {
+		self.Scope.PrintError(msg)
 	}
 }

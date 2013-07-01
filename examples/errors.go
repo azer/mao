@@ -12,7 +12,15 @@ func main () {
 		})
 
 		it("should return x if is positive", func(expect Expect) {
-			expect(0.7).Equal(0.5)
+			var (
+				a *int
+				b interface{}
+				c int = 5
+			)
+
+			expect(a).NotExist()
+			expect(b).NotExist()
+			expect(c).NotExist()
 		})
 
 	})
