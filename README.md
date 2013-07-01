@@ -15,7 +15,7 @@ See `examples/` for more info.
 
 ## How does it output?
 
-![](https://pbs.twimg.com/media/BN_4mnrCUAAR24G.png:large)
+![](https://dl.dropboxusercontent.com/s/q4md2x1gq55vnrd/mao.png)
 
 <!--
 ![](https://dl.dropboxusercontent.com/s/77k6n4vxjhgbauf/npmel_36.jpg)
