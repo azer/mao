@@ -11,18 +11,18 @@ type Expected struct {
 
 func (self *Expected) Equal (b interface{}) {
 	if self.Value != b {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to equal `%s`", self.Value, b))
+		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to equal `%v`", self.Value, b))
 	}
 }
 
 func (self *Expected) NotEqual (b interface{}) {
 	if self.Value == b {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to not equal `%s`", self.Value, b))
+		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to not equal `%v`", self.Value, b))
 	}
 }
 
 func (self *Expected) NotExist () {
 	if self.Value != nil {
-		self.Scope.PrintError(fmt.Sprintf("Expected `%s` to not exist.", self.Value))
+		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to not exist.", self.Value))
 	}
 }
