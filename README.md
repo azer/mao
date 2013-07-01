@@ -13,4 +13,10 @@ Desc("math.Abs", func(it It) {
 
 See `examples/` for more info.
 
+## How does it output?
+
+![](https://pbs.twimg.com/media/BN_4mnrCUAAR24G.png:large)
+
+<!--
 ![](https://dl.dropboxusercontent.com/s/77k6n4vxjhgbauf/npmel_36.jpg)
+-->
