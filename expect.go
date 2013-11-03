@@ -32,6 +32,20 @@ func (self *Expected) Equal (b interface{}) {
 	}
 }
 
+func (self *Expected) Lower (b interface{}) {
+	value, ok := self.Value.(int)
+	otherValue, otherOk := b.(int)
+
+	if !ok || !otherOk {
+		self.Scope.PrintError(fmt.Sprintf("Unable to compare `%v` with `%v`", self.Value, b))
+		return
+	}
+
+	if value >= otherValue {
+		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to be lower than `%v`", self.Value, b))
+	}
+}
+
 func (self *Expected) NotEqual (b interface{}) {
 	if self.Value == b {
 		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to not equal `%v`", self.Value, b))
