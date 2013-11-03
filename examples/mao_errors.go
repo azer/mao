@@ -1,3 +1,6 @@
+package main
+import . "github.com/azer/mao"
+func main() {
 Desc("math.Abs", func(it It) {
 
 	it("returns the absolute value of x", func(expect Expect) {
@@ -31,3 +34,5 @@ Desc("math.Floor", func(it It) {
 	})
 
 })
+  PrintTestSummary()
+  }

@@ -1,0 +1,15 @@
+echo ""
+echo "\x1B[90m    This script requires superuser access to install Mao."
+echo "    You will be prompted for your password by sudo.\033[0m"
+echo ""
+
+sudo -k
+
+sudo sh <<SCRIPT
+
+  echo "\x1B[90m    Please wait...\033[0m"
+  curl -s https://raw.github.com/azer/mao/master/mao > /usr/bin/mao
+  chmod +x /usr/bin/mao
+  echo "    \033[1m\033[32mThanks for installing Mao. You're all set!\033[0m"
+
+SCRIPT

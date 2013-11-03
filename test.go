@@ -6,6 +6,8 @@ type Test struct {
 }
 
 func (test *Test) Run () {
+	incTestCounter()
+
 	test.Fn(func (val interface{}) *Expected {
 		return &Expected{ test, val }
 	})

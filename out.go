@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"path"
 	"strings"
+	"os"
+	"strconv"
 )
 
 type FailingLine struct {
@@ -16,9 +18,12 @@ type FailingLine struct {
 	prev string
 }
 
-var lastTitle string;
+var lastTitle string
 
 var (
+	testCounter = 0
+	failCounter = 0
+	startingLine = os.Getenv("MAO_LINENO_START")
 	reset string = "\033[0m"
 	white string = "\033[37m\033[1m"
 	grey string = "\x1B[90m"
@@ -30,6 +35,8 @@ func (test *Test) PrintTitle (title string) {
 }
 
 func (test *Test) PrintError (message string) {
+	failCounter += 1
+
 	if lastTitle != test.Title {
 		lastTitle = test.Title
 		test.PrintTitle(test.Title)
@@ -52,6 +59,15 @@ func (test *Test) PrintFailingLine (failingLine *FailingLine) {
 	fmt.Println(reset)
 }
 
+func PrintTestSummary () {
+	if failCounter > 0 {
+		fmt.Printf("\n  Ran %d tests, %d assertions failed.\n\n", testCounter, failCounter)
+		return
+	}
+
+	fmt.Printf("\n  Ran %d tests successfully.\n\n", testCounter)
+}
+
 func getFailingLine () (FailingLine, error) {
 	_, filename, ln, _ := runtime.Caller(3)
 
@@ -62,15 +78,26 @@ func getFailingLine () (FailingLine, error) {
 	}
 
 	lines := strings.Split(string(bf), "\n")[ln-2:ln+2]
+	filename = strings.Replace(filename, "mao_", "", 1)
+	lineno := int(ln)
+
+	if len(startingLine) > 0 {
+		lndiff, _ := strconv.Atoi(startingLine)
+		lineno -= lndiff
+	}
 
 	return FailingLine{
 		softTabs(lines[1]),
 		filename,
 		softTabs(lines[2]),
-		int(ln),
+		lineno,
 		softTabs(lines[0]),
 	}, nil
 
+}
+
+func incTestCounter () {
+	testCounter += 1
 }
 
 func softTabs (text string) string {
