@@ -56,4 +56,4 @@ Ran 3 tests successfully.
 
 Or some error messages with failing source code lines, like following;
 
-![](https://i.cloudup.com/9bGTa4NUKZ.png)
+![](https://i.cloudup.com/CHNocClka1.png)
