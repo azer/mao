@@ -56,4 +56,4 @@ Ran 3 tests successfully.
 
 Or some error messages with failing source code lines, like following;
 
-![](https://dl.dropboxusercontent.com/s/q4md2x1gq55vnrd/mao.png)
+![](https://i.cloudup.com/9bGTa4NUKZ.png)
