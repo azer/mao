@@ -38,13 +38,32 @@ $ curl https://raw.github.com/azer/mao/master/install | sh
 Create a test module anywhere you want and import the code you'd like to test:
 
 ```go
-import "math" // or: import "github.com/you/repository"
+import "math/rand" // or: import "github.com/you/repository"
 
-Desc("math.Abs", func(it It) {
-  it("returns the absolute value of x", func(expect Expect) {
-    expect(math.Abs(-12)).Equal(12.0)
-    expect(math.Abs(-.5)).Equal(0.5)
+Desc("randInt", func(it It) {
+  var (
+    current int
+    last int
+  )
+
+  BeforeEach(func () {
+    current = rand.Int()
   })
+
+  AfterEach(func () {
+    last = current
+  })
+
+  it("generates a random number", func (expect Expect) {
+    expect(current).Above(0)
+  })
+
+  it("generates a unique number on each call", func (expect Expect) {
+    expect(current).Above(0)
+    expect(last).Above(0)
+    expect(current).NotEqual(last)
+  })
+
 })
 ```
 
