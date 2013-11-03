@@ -63,3 +63,21 @@ Ran 3 tests successfully.
 Or some error messages with failing source code lines, like following;
 
 ![](https://i.cloudup.com/CHNocClka1.png)
+
+## Reference
+
+### BDD API
+
+* Desc
+* It
+* BeforeEach
+* AfterEach
+
+### Assertion API
+
+* Above
+* Equal
+* NotEqual
+* NotExist
+* Lower
+
