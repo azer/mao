@@ -15,9 +15,9 @@ Desc("math.Abs", func(it It) {
 
 **Why Māo?**
 
-* No restrictions: You can create your test file anywhere.
+* More flexibility: You can locate your tests in any directory.
 * Don't repeat yourself: Māo does the ceremony for you by preprocessing the test module.
-* Minimalistic Output: Māo doesn't have verbose outputs. It'll output quite short and briefly, will show you what lines fail in case of any error.
+* Minimalistic Output: Māo doesn't have verbose outputs. It'll output short and briefly, will show you what lines fail in case of any error.
 
 ## Install
 
