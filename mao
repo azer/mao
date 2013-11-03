@@ -45,6 +45,7 @@ $source"
   else
       while read -r line; do
           local ln=$(echo "$line" | grep -oh ".go:[0-9]*" | sed 's/.go://')
+          line=$(echo "$line" | sed 's/mao_//')
 
           if [ -z "$ln" ]; then
             echo "$line"
