@@ -13,6 +13,12 @@ Desc("math.Abs", func(it It) {
 })
 ```
 
+## Why Māo?
+
+* **No restrictions.** You can create your test file anywhere.
+* **Don't repeat yourself:** Māo does the ceremony for you by preprocessing the test module.
+* **Minimalistic Output:** Māo doesn't have verbose outputs. It'll output quite short and briefly, will show you what lines fail in case of any error.
+
 ## Install
 
 Install the Go library first;
