@@ -38,7 +38,7 @@ $ curl https://raw.github.com/azer/mao/master/install | sh
 Create a test module anywhere you want and import the code you'd like to test:
 
 ```go
-import "math"
+import "math" // or: import "github.com/you/repository"
 
 Desc("math.Abs", func(it It) {
   it("returns the absolute value of x", func(expect Expect) {
