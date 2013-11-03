@@ -3,7 +3,7 @@ package main
 import "math"
 import . "github.com/azer/mao"
 
-func main () {
+func main() {
 
 	Desc("math.Abs", func(it It) {
 
