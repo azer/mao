@@ -16,13 +16,19 @@ run () {
   rm -f "$modulePath"
   local source=$(cat $1)
   local module="package main
-import . \"github.com/azer/mao\"
-$source"
+import . \"github.com/azer/mao\""
 
-  local bddStartsAt=$(echo "$module" | grep -n "Desc(" -m 1 |cut -f1 -d:)
-  module=$(echo "$module" | sed "${bddStartsAt}i func main() {
+  local bddStartsAt=$(echo "$source" | grep -n "Desc(" -m 1 |cut -f1 -d:)
+
+  if [ -z "$bddStartsAt" ]; then
+    printError "Unable to find any 'Desc' call in '$1'"
+  fi
+
+  local wrapped=$(echo "$source" | sed "${bddStartsAt}i func main() {
   ")
+
   module="$module
+  $wrapped
   PrintTestSummary()
   }"
 
@@ -45,7 +51,7 @@ $source"
   else
       while read -r line; do
           local ln=$(echo "$line" | grep -oh ".go:[0-9]*" | sed 's/.go://')
-          line=$(echo "$line" | sed 's/mao_//')
+          line=$(echo "$line" | sed -e "s=$modulePath=$1=")
 
           if [ -z "$ln" ]; then
             echo "$line"
@@ -81,12 +87,13 @@ title () {
 }
 
 printError () {
-  echo "$@" 1>&2;
+  echo ""
+  colored "Error: $1" "31"
+  echo ""
+  exit 1
 }
 
-if [ "$command" = "register" ]; then
-  register $@
-elif [ -n "$command" ]; then
+if [ -n "$command" ]; then
     run "$command"
 elif [ "$command" = "help" ]; then
   help $@
