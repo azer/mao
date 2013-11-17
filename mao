@@ -50,7 +50,7 @@ import . \"github.com/azer/mao\""
       exit 1
   else
       while read -r line; do
-          local ln=$(echo "$line" | grep -oh ".go:[0-9]*" | sed 's/.go://')
+          local ln=$(echo "$line" | grep -oh $modulePath":[0-9]*" | sed -e "s=$modulePath:==")
           line=$(echo "$line" | sed -e "s=$modulePath=$1=")
 
           if [ -z "$ln" ]; then
