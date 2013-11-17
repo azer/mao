@@ -8,6 +8,7 @@ type BeforeAfterFn func()
 type It func(title string, fn func(Expect))
 
 var (
+	Describe func (desc string, wrapper func(It)) = Desc
 	beforeEachFn BeforeAfterFn
 	afterEachFn  BeforeAfterFn
 )

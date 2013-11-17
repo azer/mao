@@ -21,7 +21,11 @@ import . \"github.com/azer/mao\""
   local bddStartsAt=$(echo "$source" | grep -n "Desc(" -m 1 |cut -f1 -d:)
 
   if [ -z "$bddStartsAt" ]; then
-    printError "Unable to find any 'Desc' call in '$1'"
+    bddStartsAt=$(echo "$source" | grep -n "Describe(" -m 1 |cut -f1 -d:)
+  fi
+
+  if [ -z "$bddStartsAt" ]; then
+    printError "Unable to find any 'Desc' or 'Describe' call in '$1'"
   fi
 
   local wrapped=$(echo "$source" | sed "${bddStartsAt}i func main() {
