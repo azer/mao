@@ -11,6 +11,14 @@ help () {
 }
 
 run () {
+  if [ ! -f "$1" ];
+  then
+      echo "
+    Oops, \"$1\" doesn't exist.
+"
+      exit 1
+  fi
+
   local modulePath=$(echo "$1" | sed 's/\([^\/]*\)\.go$/mao_\1.go/')
   local errorOutputPath="/tmp/mao-errors-"$[ ( $RANDOM % 99999 )  + 1 ]
   rm -f "$modulePath"
@@ -38,7 +46,7 @@ import . \"github.com/azer/mao\""
 
   echo "$module" >> "$modulePath"
 
-  result=$(MAO_LINENO_START=3 go run "$modulePath" 2>&1)
+  result=$(MAO_LINENO_START=3 go run "$modulePath" | tee)
   rm -f "$modulePath"
 
   isSuccessful=$(echo "$result" | grep success)
