@@ -79,5 +79,6 @@ Or some error messages with failing source code lines, like following;
 * Equal
 * NotEqual
 * NotExist
+* ResponseBody
 * Lower
 

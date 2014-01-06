@@ -3,6 +3,8 @@ package mao
 import (
 	"fmt"
 	"reflect"
+	"net/http"
+	"io/ioutil"
 )
 
 type Expect func(val interface{}) *Expected
@@ -71,5 +73,19 @@ func (self *Expected) NotExist() {
 
 	if !v.IsNil() {
 		self.Scope.PrintError(msg)
+	}
+}
+
+func (self *Expected) ResponseBody(b interface{}) {
+	response := self.Value.(*http.Response)
+	body, err := ioutil.ReadAll(response.Body)
+
+	if err != nil {
+		self.Scope.PrintError(fmt.Sprintf("Unable to read `%v`", self.Value))
+		return
+	}
+
+	if string(body) != b {
+		self.Scope.PrintError(fmt.Sprintf("Expected `%v` to equal `%v`", string(body), b))
 	}
 }
