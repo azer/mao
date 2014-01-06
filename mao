@@ -46,7 +46,7 @@ import . \"github.com/azer/mao\""
 
   echo "$module" >> "$modulePath"
 
-  result=$(MAO_LINENO_START=3 go run "$modulePath" | tee)
+  result=$(MAO_LINENO_START=3 go run "$modulePath" | tee /dev/tty)
   rm -f "$modulePath"
 
   isSuccessful=$(echo "$result" | grep success)
