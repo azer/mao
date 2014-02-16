@@ -77,7 +77,12 @@ func (self *Expected) NotExist() {
 }
 
 func (self *Expected) ResponseBody(b interface{}) {
-	response := self.Value.(*http.Response)
+	response, err := http.Get(self.Value.(string))
+
+	if err != nil {
+		self.Scope.PrintError(fmt.Sprintf("Unable to get %s", self.Value))
+	}
+
 	body, err := ioutil.ReadAll(response.Body)
 
 	if err != nil {

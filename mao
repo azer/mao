@@ -49,13 +49,12 @@ import . \"github.com/azer/mao\""
   result=$(MAO_LINENO_START=3 go run "$modulePath" | tee /dev/tty)
   rm -f "$modulePath"
 
-  printf "\033c"
-
   isSuccessful=$(echo "$result" | grep success)
   areTestsFailed=$(echo "$result" | grep "assertions failed.")
   lineCount=$(echo "$result" | wc -l)
 
   if [[ $lineCount -eq 2 ]] && [ -n "$isSuccessful" ]; then
+      printf "\033c"
       echo "$result
       "
   elif [ -n "$areTestsFailed" ]; then
