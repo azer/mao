@@ -1,6 +1,6 @@
 ## Māo
 
-Minimalistic BDD Testing Framework For Go.
+Pragmatic BDD Testing Framework For Go.
 
 ```go
 import "math"
