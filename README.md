@@ -105,4 +105,4 @@ Test("returns the absolute value of x", func(e Expect) {
 
 At this point, I wouldn't recommend to use Mao. I still have the same goal but it may cause some pain since its preprocesser is not reliable enough. 
 
-And I'm actively working on other projects nowadays, I'd appreciate any contribution to reach to the goal of this project...
+And since other projects occupy my time nowadays, I'd appreciate pull requests to reach the goals of the project. Thank you for the interest!
