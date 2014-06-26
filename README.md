@@ -88,7 +88,7 @@ Or some error messages with failing source code lines, like following;
 
 I recently think of two major changes in the project;
 
-* Rewriting the preprocesser bash script "mao" in Go
+* Rewriting [the preprocesser](https://github.com/azer/mao/blob/master/mao) (bash script) in Go
 * Replacing "desc/it" with "test". 
 * replacing expect with Go's testing
 
