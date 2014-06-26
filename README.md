@@ -1,6 +1,6 @@
 ## Māo
 
-Pragmatic BDD Testing Framework For Go.
+Pragmatic BDD Testing Framework For Go. 
 
 ```go
 import "math"
@@ -18,6 +18,8 @@ Desc("math.Abs", func(it It) {
 * More flexibility: You can locate your tests in any directory.
 * Don't repeat yourself: Māo does the ceremony for you by preprocessing the test module.
 * Minimalistic Output: Māo doesn't have verbose outputs. It'll output short and briefly, will show you what lines fail in case of any error.
+
+**[Development Status](#development-status)**
 
 ## Install
 
@@ -82,3 +84,25 @@ Or some error messages with failing source code lines, like following;
 * ResponseBody
 * Lower
 
+## Development Status
+
+I recently think of two major changes in the project;
+
+* Rewriting the preprocesser bash script "mao" in Go
+* Replacing "desc/it" with "test". 
+* replacing expect with Go's testing
+
+So it'd be looking like;
+
+```go
+import "math"
+
+Test("returns the absolute value of x", func(e Expect) {
+  expect(math.Abs(-12)).Equal(12.0)
+  expect(math.Abs(-.5)).Equal(0.5)
+})
+```
+
+At this point, I wouldn't recommend to use Mao. I still have the same goal but it may cause some pain since its preprocesser is not reliable enough. 
+
+And I'm actively working on other projects nowadays, I'd appreciate any contribution to reach to the goal of this project...
