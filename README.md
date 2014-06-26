@@ -19,7 +19,7 @@ Desc("math.Abs", func(it It) {
 * Don't repeat yourself: Māo does the ceremony for you by preprocessing the test module.
 * Minimalistic Output: Māo doesn't have verbose outputs. It'll output short and briefly, will show you what lines fail in case of any error.
 
-**[Development Status](#development-status)**
+Update: **[Development Status](#development-status)**
 
 ## Install
 
